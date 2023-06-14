@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="showip">Get IP</button>
+
+    <p id="ipAddress"></p>
+
+    <br />
+
+    <button onclick="getLocations()">Get Location</button>
+    <p id="showlocation"></p>
+
+    <script>
+      const ipadd = document.getElementById("showip");
+      const loc = document.getElementById("showlocation");
+      const ipAddressElement = document.getElementById("ipAddress");
+
+      ipadd.addEventListener("click", function onClick(event) {
+        fetch("https://api.ipify.org/?format=json")
+          .then((response) => response.json())
+          .then((data) => {
+            const ipAddress = data.ip;
+            ipAddressElement.textContent = ipAddress;
+          });
+      });
+      //   location get
+      function getLocations() {
+        navigator.geolocation.getCurrentPosition(success, error);
+      }
+      function success(data) {
+        loc.innerHTML = `latitude→ ${data.coords.latitude} <br> longitude→ ${data.coords.longitude}`;
+        console.log(data.coords);
+      }
+      function error(err) {
+        console.error(err);
+      }
+    </script>
+  </body>
+</html>

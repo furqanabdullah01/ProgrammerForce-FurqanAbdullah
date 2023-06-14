@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/f857d25783.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <form action="#" class="form-container">
+      <h3>Validation Form</h3>
+      <div class="form-fields">
+        <label for="fullname">Full Name</label><br />
+        <input
+          type="text"
+          name="fullname"
+          placeholder="Fullname"
+          id="user"
+          pattern="^[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*$"
+          title="Please first letters should be capital and space between first name & last name"
+          required
+        />
+        <i class="fa fa-times u_times"></i>
+        <i class="fa fa-check u_check"></i>
+      </div>
+      <div class="form-fields">
+        <label for="username">Username</label><br />
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          id="user"
+          pattern="^[a-z]+$"
+          title="Please use only lowercase letters and no spaces."
+          required
+        />
+        <i class="fa fa-times u_times"></i>
+        <i class="fa fa-check u_check"></i>
+      </div>
+      <div class="form-fields">
+        <label for="phonenumber">Phone Number</label><br />
+        <input
+          type="text"
+          name="phonenumber"
+          placeholder="Phone Number"
+          id="user"
+          pattern="^(\+92|0)3[0-4]\d{8}$"
+          title="Please enter your number with country code ."
+          required
+        />
+        <i class="fa fa-times u_times"></i>
+        <i class="fa fa-check u_check"></i>
+      </div>
+      <div class="form-fields">
+        <label for="password">Password</label><br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          id="ph"
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
+          title="Password requirements: 8-15 characters, 1 lowercase letter, 1 uppercase letter, 1 numeric digit, and 1 special character."
+        />
+        <i class="fa fa-times u_times"></i>
+        <i class="fa fa-check u_check"></i>
+      </div>
+      <!-- <div class="form-field1"> -->
+      <select name="Degree" id="firstDropdown" onchange="showSecondDropdown()">
+        <option value="">Degree</option>
+        <option value="0">High School Diploma</option>
+        <option value="1">Associate's Degree</option>
+        <option value="2">Bachelor's Degree</option>
+        <option value="3">Master's Degree</option>
+      </select>
+      <!-- </div> -->
+      <!-- <div class="form-field2"> -->
+      <select
+        id="secondDropdown"
+        style="display: none"
+        onchange="showThirdDropdown()"
+      >
+        <option value="">Years</option>
+        <option value="10">10 Years</option>
+        <option value="12">12 Years</option>
+        <option value="16">16 Years</option>
+        <option value="18">18 Years</option>
+      </select>
+      <!-- </div> -->
+      <!-- <div class="form-field3"> -->
+      <select name="" id="thirdDropdown" style="display: none">
+        <option value="">Session</option>
+        <option value="fall">Fall Semester</option>
+        <option value="spring">Spring Semester</option>
+        <option value="summer">Summer Session</option>
+        <option value="annual">Annual</option>
+      </select>
+      <!-- </div> -->
+      <div class="form-fields">
+        <input type="submit" name="submit-btn" value="submit" />
+      </div>
+    </form>
+    <script src="form.js">
+        function showSecondDropdown() {
+        var firstDropdown = document.getElementById("firstDropdown");
+        var secondDropdown = document.getElementById("secondDropdown");
+        var thirdDropdown = document.getElementById("thirdDropdown");
+
+        if (firstDropdown.value !== "") {
+          secondDropdown.style.display = "block";
+        } else {
+          secondDropdown.style.display = "none";
+          thirdDropdown.style.display = "none";
+        }
+      }
+
+      function showThirdDropdown() {
+        var secondDropdown = document.getElementById("secondDropdown");
+        var thirdDropdown = document.getElementById("thirdDropdown");
+
+        if (secondDropdown.value !== "") {
+          thirdDropdown.style.display = "block";
+        } else {
+          thirdDropdown.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
